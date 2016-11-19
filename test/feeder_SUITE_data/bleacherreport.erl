@@ -22,7 +22,7 @@ wanted() -> {
       categories = [#category{term = <<"Soccer">>}, #category{term = <<"World Football">>}, #category{term = <<"MLS">>},
                     #category{term = <<"Opinion">>}, #category{term = <<"Seattle Sounders FC">>}, #category{term = <<"Artur Davtyan">>},
                     #category{term = <<"Serge Deblé"/utf8>>}],
-      updated = <<"Fri, 14 Oct 2016 04:01:42 -0400">> 
+      published = <<"Fri, 14 Oct 2016 04:01:42 -0400">> 
     },
     #entry{
       id = <<"http://bleacherreport.com/articles/2669286-colorado-rapids-on-accelerated-path-toward-winning-trophies-in-2016">>,
@@ -33,7 +33,7 @@ wanted() -> {
       categories = [#category{term = <<"Soccer">>}, #category{term = <<"World Football">>}, #category{term = <<"MLS">>},
                     #category{term = <<"Colorado Rapids">>}, #category{term = <<"Opinion">>}, #category{term = <<"Artur Davtyan">>},
                     #category{term = <<"Serge Deblé"/utf8>>}],
-      updated = <<"Thu, 13 Oct 2016 10:43:52 -0400">> 
+      published = <<"Thu, 13 Oct 2016 10:43:52 -0400">> 
     }
   ]
   }.

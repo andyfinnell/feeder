@@ -230,6 +230,8 @@ feed(F, category, State) ->
   prepend(F, #feed.categories, category(State));
 feed(F, updated, State) ->
   update(F, #feed.updated, chars(State));
+feed(F, published, State) ->
+  update(F, #feed.published, chars(State));
 feed(F, ttl, State) ->
   Chars = chars(State),
   {TTL, _} = string:to_integer(Chars),
@@ -254,6 +256,8 @@ entry(E, image, State) ->
   update(E, #entry.image, chars(State));
 entry(E, link, State) ->
   prepend_unique(E, #entry.links, link_entity(State));
+entry(E, published, State) ->
+  update(E, #entry.published, chars(State));  
 entry(E, subtitle, State) ->
   update(E, #entry.subtitle, text(State));
 entry(E, summary, State) ->
@@ -437,7 +441,8 @@ qname({_, "item"}) -> entry;
 qname({_, "language"}) -> language;
 qname({_, "link"}) -> link;
 qname({_, "name"}) -> name;
-qname({_, "pubDate"}) -> updated;
+qname({_, "pubDate"}) -> published;
+qname({_, "published"}) -> published;
 qname({_, "subtitle"}) -> subtitle;
 qname({_, "summary"}) -> summary;
 qname({_, "title"}) -> title;
@@ -524,10 +529,11 @@ qname_test() -> q([
   {language, ["language"]},
   {link, ["link"]},
   {name, ["name"]},
+  {published, ["pubDate", "published"]},
   {subtitle, ["subtitle"]},
   {summary, ["summary", "description"]},
   {title, ["title"]},
   {undefined, ["wtf", "", "!"]},
-  {updated, ["updated", "pubDate"]}
+  {updated, ["updated"]}
 ]).
 -endif.

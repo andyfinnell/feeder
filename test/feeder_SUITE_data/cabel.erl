@@ -30,12 +30,14 @@ wanted() -> {
       ],
       title = #text{value = <<"The Best Fast Food Receipt">>, type= <<"text">>},
       content = #text{value = <<"<div class=\"photoblock-left\"><img src=\"http://www.cabel.name/images-post/2009/10/receipt-350.png\" class=\"photoborder\"></div>I'm not a real \"fast food\" guy. I don't really love burgers, and I don't really love super fried or greasy things, and I realize that by making both of these statements it's very possible that the Department of Bro-land Security will revoke my man-certificate.<br />">>, type = <<"html">>},
+      published = <<"2009-10-12T13:33:00.001-07:00">>,
       updated = <<"2009-10-12T13:39:32.014-07:00">> 
     },
     
     #entry{
       id = <<"tag:blogger.com,1999:blog-14853865.post-3886385625844000508">>,
       updated = <<"2009-09-30T14:54:27.737-07:00">>,
+      published = <<"2009-09-30T14:54:00.001-07:00">>,
       title = #text{type = <<"text">>, value = <<"Kashiwa Mystery Cafe">>},
       content = #text{type = <<"html">>, value = <<"So, we're in Japan, and we've just stepped off the train in Kashiwa, a very nice town in Chiba which also happens to be the home of Panic's Japanese HQ, which itself happens to be essentially a cozy apartment, which reminds me of Panic USA 1.0, except Noby and Kenichi don't <i>live</i> in the apartment, and the apartment is in Japan.<br />">>},
       links = [

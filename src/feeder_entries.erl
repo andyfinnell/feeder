@@ -14,6 +14,8 @@ get(image, E) ->
   E#entry.image;
 get(links, E) ->
   E#entry.links;
+get(published, E) ->
+  feeder_utils:not_undefined(E#entry.published, E#entry.updated);
 get(subtitle, E) ->
   E#entry.subtitle;
 get(summary, E) ->
@@ -21,7 +23,7 @@ get(summary, E) ->
 get(title, E) ->
   E#entry.title;
 get(updated, E) ->
-  E#entry.updated;
+  feeder_utils:not_undefined(E#entry.updated, E#entry.published);
 get(content, E) ->
   E#entry.content;
 get(categories, E) ->
@@ -63,9 +65,43 @@ entry_test() ->
   ?assertMatch(Title, #text{value = <<"Cats">>}),
   Updated = feeder_entries:get(updated, Entry),
   ?assertMatch(Updated, <<"Sun, 04 Sep 2016 00:15:10 GMT">>),
+  Published = feeder_entries:get(published, Entry),
+  ?assertMatch(Published, <<"Sun, 04 Sep 2016 00:15:10 GMT">>),
   Content = feeder_entries:get(content, Entry),
   ?assertMatch(Content, #text{value = <<"A lot of words about cats.">>}),
   Categories = feeder_entries:get(categories, Entry),
   ?assertMatch(Categories, [#category{term = <<"cats">>}]),
   ok.
+  
+entry_updated_test() ->
+  Entry = #entry{
+    updated = <<"Sun, 04 Sep 2016 00:15:10 GMT">>
+  },
+  Updated = feeder_entries:get(updated, Entry),
+  ?assertMatch(Updated, <<"Sun, 04 Sep 2016 00:15:10 GMT">>),
+  Published = feeder_entries:get(published, Entry),
+  ?assertMatch(Published, <<"Sun, 04 Sep 2016 00:15:10 GMT">>),
+  ok.
+  
+entry_published_test() ->
+  Entry = #entry{
+    published = <<"Sun, 04 Sep 2016 00:15:10 GMT">>
+  },
+  Updated = feeder_entries:get(updated, Entry),
+  ?assertMatch(Updated, <<"Sun, 04 Sep 2016 00:15:10 GMT">>),
+  Published = feeder_entries:get(published, Entry),
+  ?assertMatch(Published, <<"Sun, 04 Sep 2016 00:15:10 GMT">>),
+  ok.
+
+entry_updated_published_test() ->
+  Entry = #entry{
+    updated = <<"Mon, 05 Sep 2016 00:15:10 GMT">>,
+    published = <<"Sun, 04 Sep 2016 00:15:10 GMT">>
+  },
+  Updated = feeder_entries:get(updated, Entry),
+  ?assertMatch(Updated, <<"Mon, 05 Sep 2016 00:15:10 GMT">>),
+  Published = feeder_entries:get(published, Entry),
+  ?assertMatch(Published, <<"Sun, 04 Sep 2016 00:15:10 GMT">>),
+  ok.
+
 -endif.

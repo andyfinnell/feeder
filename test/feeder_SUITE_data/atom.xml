@@ -17,4 +17,12 @@
         <summary>Some text.</summary>
     </entry>
 
+    <entry>
+        <title>Kibble-Powered Felines Run Amok</title>
+        <link href="http://example.org/2003/12/13/atom04"/>
+        <id>urn:uuid:1225c695-cfb8-4ebb-bbbb-80da344efa6a</id>
+        <published>2003-12-13T08:29:29-04:00</published>
+        <summary>Some catty retort.</summary>
+    </entry>
+
 </feed>

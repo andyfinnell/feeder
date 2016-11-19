@@ -27,7 +27,7 @@ wanted() -> {
       summary = #text{value = <<"Dr. Drang has some excellent follow-up for the Mac draft I held earlier this week."/utf8>>},
       content = #text{value = <<"<p>Dr. Drang has <a href=\"http://leancrew.com/all-this/2016/09/four-or-more-macs/\">some excellent follow-up</a> for <a href=\"https://www.relay.fm/b-sides/26\">the Mac draft</a> I held earlier this week.</p>"/utf8>>},
       categories = [#category{term = <<"Apple">>}, #category{term = <<"Apple History">>}],
-      updated = <<"Sat, 01 Oct 2016 17:16:20 +0000">> 
+      published = <<"Sat, 01 Oct 2016 17:16:20 +0000">> 
     },
         
     #entry{
@@ -38,7 +38,7 @@ wanted() -> {
       summary = #text{value = <<"Instead of running RSS sponsorships this month, I’m raising money in support of St. Jude Children’s Research Hospital as part of Childhood Cancer Awareness Month. Click here to learn more and donate. Today is September 30, and the end of Childhood Cancer Awareness Month. I&#8217;d like to thank everyone who donated to support the work [&#8230;]"/utf8>>},
       content = #text{value = <<"<p><em>Instead of running RSS sponsorships this month, I’m raising money in support of St. Jude Children’s Research Hospital as part of Childhood Cancer Awareness Month. <a href=\"http://heroes.stjude.org/stephenhackett\">Click here to learn more and donate.</a></em></p>"/utf8>>},
       categories = [#category{term = <<"Sponsor">>}],
-      updated = <<"Fri, 30 Sep 2016 15:13:57 +0000">> 
+      published = <<"Fri, 30 Sep 2016 15:13:57 +0000">> 
     }    
   ]
   }.

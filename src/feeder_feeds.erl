@@ -14,6 +14,8 @@ get(language, F) ->
   F#feed.language;
 get(links, F) ->
   F#feed.links;
+get(published, F) ->
+  feeder_utils:not_undefined(F#feed.published, F#feed.updated);
 get(subtitle, F) ->
   F#feed.subtitle;
 get(summary, F) ->
@@ -21,7 +23,7 @@ get(summary, F) ->
 get(title, F) ->
   F#feed.title;
 get(updated, F) ->
-  F#feed.updated;
+  feeder_utils:not_undefined(F#feed.updated, F#feed.published);
 get(ttl, F) ->
   F#feed.ttl;
 get(categories, F) ->
@@ -61,6 +63,8 @@ feed_test() ->
   ?assertMatch(Summary, #text{value = <<"Thoughts of secret agent Bob Jimbob.">>}),
   Title = feeder_feeds:get(title, Feed),
   ?assertMatch(Title, #text{value = <<"Secret Agent Cat">>}),
+  Published = feeder_feeds:get(published, Feed),
+  ?assertMatch(Published, <<"Sun, 04 Sep 2016 00:15:10 GMT">>),
   Updated = feeder_feeds:get(updated, Feed),
   ?assertMatch(Updated, <<"Sun, 04 Sep 2016 00:15:10 GMT">>),
   TTL = feeder_feeds:get(ttl, Feed),
@@ -68,4 +72,39 @@ feed_test() ->
   Categories = feeder_feeds:get(categories, Feed),
   ?assertMatch(Categories, [#category{term = <<"cats">>}]),
   ok.
+  
+feed_update_test() ->
+  %% If have updated, but no published, published should return updated
+  Feed = #feed{
+    updated = <<"Sun, 04 Sep 2016 00:15:10 GMT">>
+  },
+  Published = feeder_feeds:get(published, Feed),
+  ?assertMatch(Published, <<"Sun, 04 Sep 2016 00:15:10 GMT">>),
+  Updated = feeder_feeds:get(updated, Feed),
+  ?assertMatch(Updated, <<"Sun, 04 Sep 2016 00:15:10 GMT">>),
+  ok.
+
+feed_published_test() ->
+  %% If have published, but no updated, updated should return published
+  Feed = #feed{
+    published = <<"Sun, 04 Sep 2016 00:15:10 GMT">>
+  },
+  Published = feeder_feeds:get(published, Feed),
+  ?assertMatch(Published, <<"Sun, 04 Sep 2016 00:15:10 GMT">>),
+  Updated = feeder_feeds:get(updated, Feed),
+  ?assertMatch(Updated, <<"Sun, 04 Sep 2016 00:15:10 GMT">>),
+  ok.
+
+feed_update_published_test() ->
+  %% If have published and updated, each should be returned
+  Feed = #feed{
+    updated = <<"Mon, 05 Sep 2016 00:15:10 GMT">>,
+    published = <<"Sun, 04 Sep 2016 00:15:10 GMT">>
+  },
+  Published = feeder_feeds:get(published, Feed),
+  ?assertMatch(Published, <<"Sun, 04 Sep 2016 00:15:10 GMT">>),
+  Updated = feeder_feeds:get(updated, Feed),
+  ?assertMatch(Updated, <<"Mon, 05 Sep 2016 00:15:10 GMT">>),
+  ok.
+
 -endif.

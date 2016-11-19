@@ -26,7 +26,7 @@ wanted() -> {
       subtitle = #text{value= <<"Rückblicke, Einblicke und Ausblicke auf das netzpolitische Geschehen als wöchentlicher Podcast"/utf8>>},
       summary = #text{value= <<"This week we talk about salt and pepper shakers, comparing and contrasting pour rates, construction materials, and overall aesthetics. Come and join the party!">>},
       title = #text{value= <<"Shake Shake Shake Your Spices">>},
-      updated = <<"Wed, 15 Jun 2005 19:00:00 GMT">>
+      published = <<"Wed, 15 Jun 2005 19:00:00 GMT">>
     },
     
     #entry{
@@ -39,7 +39,7 @@ wanted() -> {
       subtitle = #text{value= <<"Comparing socket wrenches is fun!">>},
       summary = #text{value= <<"This week we talk about metric vs. old english socket wrenches. Which one is better? Do you really need both? Get all of your answers here.">>},
       title = #text{value= <<"Socket Wrench Shootout">>},
-      updated = <<"Wed, 8 Jun 2005 19:00:00 GMT">>
+      published = <<"Wed, 8 Jun 2005 19:00:00 GMT">>
     },
     
     #entry{
@@ -52,7 +52,7 @@ wanted() -> {
       subtitle = #text{value= <<"Red + Blue != Purple">>},
       summary = #text{value= <<"This week we talk about surviving in a Red state if you are a Blue person. Or vice versa.">>},
       title = #text{value= <<"Red, Whine, & Blue">>},
-      updated = <<"Wed, 1 Jun 2005 19:00:00 GMT">>
+      published = <<"Wed, 1 Jun 2005 19:00:00 GMT">>
     }
   ]
 }.

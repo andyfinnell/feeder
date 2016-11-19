@@ -19,6 +19,13 @@ wanted() -> {
       summary = #text{value = <<"Some text.">>},
       title = #text{value = <<"Atom-Powered Robots Run Amok">>},
       updated = <<"Sun, 18 May 2014 16:13:31 GMT">>    
-    }
+    },
+    #entry{
+      id = <<"urn:uuid:1225c695-cfb8-4ebb-bbbb-80da344efa6a">>,
+      links = [#link{url = <<"http://example.org/2003/12/13/atom04">>}],
+      title = #text{value = <<"Kibble-Powered Felines Run Amok">>},
+      published = <<"2003-12-13T08:29:29-04:00">>,
+      summary = #text{value = <<"Some catty retort.">>}
+    }    
   ]
   }.
