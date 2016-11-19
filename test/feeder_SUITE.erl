@@ -14,6 +14,16 @@
 -export([itunes/1]).
 -export([rss/1]).
 -export([author/1]).
+-export([aaronvegh/1]).
+-export([applenews/1]).
+-export([bleacherreport/1]).
+-export([cabel/1]).
+-export([globnerdishness/1]).
+-export([cnn/1]).
+-export([five12pixels/1]).
+-export([gratefulDead/1]).
+-export([rssTwoExample2/1]).
+-export([sampleRss/1]).
 -export([measure_time/1]).
 
 all() -> [
@@ -27,8 +37,8 @@ suite() ->
   [{timetrap, {seconds, 60}}].
 
 groups() -> [
-  {atom, [parallel], [atom, author]},
-  {rss, [parallel], [rss]},
+  {atom, [parallel], [atom, author, cabel, globnerdishness]},
+  {rss, [parallel], [rss, aaronvegh, applenews, bleacherreport, cnn, five12pixels, gratefulDead, rssTwoExample2, sampleRss]},
   {itunes, [parallel], [itunes]}
 ].
 
@@ -67,12 +77,29 @@ name(Conf, Name) ->
 test(Conf, Name, Wanted) ->
   Filename = name(Conf, Name),
   Found = parse(Filename),
+  {WantedFeed, WantedEntries} = Wanted,
+  {FoundFeed, FoundEntries} = Found,  
+  WantedFeed = FoundFeed,
+  Entries = lists:zip(WantedEntries, FoundEntries),
+  lists:foreach(fun ({WantedEntry, FoundEntry}) ->
+    WantedEntry = FoundEntry
+  end, Entries),
   Wanted = Found,
   ok.
 
 atom(Conf) -> test(Conf, "atom", atom:wanted()).
 author(Conf) -> test(Conf, "author", author:wanted()).
+cabel(Conf) -> test(Conf, "cabel", cabel:wanted()).
+globnerdishness(Conf) -> test(Conf, "globnerdishness", globnerdishness:wanted()).
 rss(Conf) -> test(Conf, "rss", rss:wanted()).
+aaronvegh(Conf) -> test(Conf, "aaronvegh", aaronvegh:wanted()).
+applenews(Conf) -> test(Conf, "applenews", applenews:wanted()).
+bleacherreport(Conf) -> test(Conf, "bleacherreport", bleacherreport:wanted()).
+cnn(Conf) -> test(Conf, "cnn", cnn:wanted()).
+five12pixels(Conf) -> test(Conf, "five12pixels", five12pixels:wanted()).
+gratefulDead(Conf) -> test(Conf, "gratefulDead", gratefulDead:wanted()).
+rssTwoExample2(Conf) -> test(Conf, "rssTwoExample2", rssTwoExample2:wanted()).
+sampleRss(Conf) -> test(Conf, "sampleRss", sampleRss:wanted()).
 itunes(Conf) -> test(Conf, "itunes", itunes:wanted()).
 
 test_loop(_M, _F, _A, 0, List) ->

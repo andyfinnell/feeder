@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="http://www.blogger.com/styles/atom.css" type="text/css"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:openSearch="http://a9.com/-/spec/opensearchrss/1.0/" xmlns:georss="http://www.georss.org/georss" xmlns:thr="http://purl.org/syndication/thread/1.0">
+  <id>tag:blogger.com,1999:blog-14853865</id>
+  <updated>2010-05-13T08:41:32.033-07:00</updated>
+  <title type="text">cabel.name</title>
+  <subtitle type="html">Cabel Sasser's Internet Blog. Hooray!</subtitle>
+  <link rel="self" type="application/atom+xml" href="http://www.blogger.com/feeds/14853865/posts/default"/>
+  <link rel="alternate" type="text/html" href="http://www.cabel.name/"/>
+  <link rel="hub" href="http://pubsubhubbub.appspot.com/"/>
+  <link rel="next" type="application/atom+xml" href="http://www.blogger.com/feeds/14853865/posts/default?start-index=26&amp;max-results=25"/>
+  <link rel="http://schemas.google.com/g/2005#feed" type="application/atom+xml" href="http://cabel.name/atom.xml"/>
+  <author>
+    <name>Cabel</name>
+    <uri>http://www.blogger.com/profile/01535868020374485339</uri>
+    <email>noreply@blogger.com</email>
+  </author>
+  <generator version="7.00" uri="http://www.blogger.com">Blogger</generator>
+  <openSearch:totalResults>98</openSearch:totalResults>
+  <openSearch:startIndex>1</openSearch:startIndex>
+  <openSearch:itemsPerPage>25</openSearch:itemsPerPage>
+  <entry>
+    <id>tag:blogger.com,1999:blog-14853865.post-2537854613260204594</id>
+    <published>2009-10-12T13:33:00.001-07:00</published>
+    <updated>2009-10-12T13:39:32.014-07:00</updated>
+    <title type="text">The Best Fast Food Receipt</title>
+    <content type="html">&lt;div class="photoblock-left"&gt;&lt;img src="http://www.cabel.name/images-post/2009/10/receipt-350.png" class="photoborder"&gt;&lt;/div&gt;I'm not a real "fast food" guy. I don't really love burgers, and I don't really love super fried or greasy things, and I realize that by making both of these statements it's very possible that the Department of Bro-land Security will revoke my man-certificate.&lt;br /&gt;</content>
+    <link rel="replies" type="application/atom+xml" href="http://www.blogger.com/feeds/14853865/2537854613260204594/comments/default" title="Post Comments"/>
+    <link rel="replies" type="text/html" href="http://www.cabel.name/2009/10/best-fast-food-receipt.html#comment-form" title="41 Comments"/>
+    <link rel="edit" type="application/atom+xml" href="http://www.blogger.com/feeds/14853865/posts/default/2537854613260204594"/>
+    <link rel="self" type="application/atom+xml" href="http://www.blogger.com/feeds/14853865/posts/default/2537854613260204594"/>
+    <link rel="alternate" type="text/html" href="http://www.cabel.name/2009/10/best-fast-food-receipt.html" title="The Best Fast Food Receipt"/>
+    <author>
+      <name>Cabel</name>
+      <uri>http://www.blogger.com/profile/01535868020374485339</uri>
+      <email>noreply@blogger.com</email>
+      <gd:extendedProperty xmlns:gd="http://schemas.google.com/g/2005" name="OpenSocialUserId" value="17422330927512430321"/>
+    </author>
+    <thr:total>41</thr:total>
+  </entry>
+  <entry>
+    <id>tag:blogger.com,1999:blog-14853865.post-3886385625844000508</id>
+    <published>2009-09-30T14:54:00.001-07:00</published>
+    <updated>2009-09-30T14:54:27.737-07:00</updated>
+    <title type="text">Kashiwa Mystery Cafe</title>
+    <content type="html">So, we're in Japan, and we've just stepped off the train in Kashiwa, a very nice town in Chiba which also happens to be the home of Panic's Japanese HQ, which itself happens to be essentially a cozy apartment, which reminds me of Panic USA 1.0, except Noby and Kenichi don't &lt;i&gt;live&lt;/i&gt; in the apartment, and the apartment is in Japan.&lt;br /&gt;</content>
+    <link rel="replies" type="application/atom+xml" href="http://www.blogger.com/feeds/14853865/3886385625844000508/comments/default" title="Post Comments"/>
+    <link rel="replies" type="text/html" href="http://www.cabel.name/2009/09/kashiwa-mystery-cafe.html#comment-form" title="100 Comments"/>
+    <link rel="edit" type="application/atom+xml" href="http://www.blogger.com/feeds/14853865/posts/default/3886385625844000508"/>
+    <link rel="self" type="application/atom+xml" href="http://www.blogger.com/feeds/14853865/posts/default/3886385625844000508"/>
+    <link rel="alternate" type="text/html" href="http://www.cabel.name/2009/09/kashiwa-mystery-cafe.html" title="Kashiwa Mystery Cafe"/>
+    <author>
+      <name>Cabel</name>
+      <uri>http://www.blogger.com/profile/01535868020374485339</uri>
+      <email>noreply@blogger.com</email>
+      <gd:extendedProperty xmlns:gd="http://schemas.google.com/g/2005" name="OpenSocialUserId" value="17422330927512430321"/>
+    </author>
+    <thr:total>100</thr:total>
+  </entry>
+</feed>

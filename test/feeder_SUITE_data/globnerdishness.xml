@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>a glob of nerdishness</title>
+  <id>http://www.extinguishedscholar.com/wpglob/?feed=atom</id>
+  <link href="http://n.exts.ch/?format=atom" rel="self"/>
+  <generator>CouchApp on CouchDB (https://github.com/natevw/glob)</generator>
+  <updated>2015-04-16T13:28:12-07:00</updated>
+  <author>
+    <name>Nathan Vander Wilt</name>
+  </author>
+  <entry>
+    <id>http://n.exts.ch/2015/04/f1040_spreadsheet</id>
+    <title>Numbers.app spreadsheet template for 2014 IRS Form 1040</title>
+    <updated>2015-04-16T13:28:12-07:00</updated>
+    <content type="html">&lt;p&gt;&lt;img alt="Sample table from spreadsheet, Schedule C expense categories" src="http://n.exts.ch/resource/post-fcf4a38f1f9fe79c3a2b105f9d001454/Screen+Shot+2015-04-16+at+11.08.55+AM.png"&gt;&lt;/img&gt;&lt;/p&gt;</content>
+    <link href="http://n.exts.ch/2015/04/f1040_spreadsheet" rel="alternate"/>
+  </entry>
+  <entry>
+    <id>http://n.exts.ch/2014/05/fat_chat</id>
+    <title>FAT in a fortnight</title>
+    <updated>2014-05-30T10:20:16-07:00</updated>
+    <content type="html">&lt;p&gt;My &lt;a href="https://github.com/natevw"&gt;GitHub account&lt;/a&gt; has been busy lately, thanks to not just one but two great open source&#x2013;supporting clients!&lt;/p&gt;</content>
+    <link href="http://n.exts.ch/2014/05/fat_chat" rel="alternate"/>
+  </entry>
+</feed>

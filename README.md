@@ -2,8 +2,6 @@
 
 The **feeder** [Erlang](http://www.erlang.org/) library parses RSS and Atom formatted XML feeds. It is a stream based parser that sends its events through a callback interface.
 
-[![Build Status](https://secure.travis-ci.org/michaelnisi/feeder.svg)](http://travis-ci.org/michaelnisi/feeder)
-
 ## Usage
 
 Parse a file and accumulate parser events:
@@ -44,17 +42,100 @@ example:print_titles("http://5by5.tv/rss").
 
 ## Types
 
-### feed()
+### author()
 
-The `channel` or `feed` tuple.
+An author or contributor to a `feed` or `entry`.
 
-### enclosure()
+```erlang
+feeder_authors:get(Key, Author) -> Value
+```
+- `Key = name | url | email`
+- `Author = author()`
+- `Value = binary() | undefined`
 
-The `enclosure` tuple for an `item` or `entry`.
+### category()
+
+A tag used to categorize a `feed` or `entry`.
+
+```erlang
+feeder_categories:get(Key, Category) -> Value
+```
+- `Key = term | scheme | label`
+- `Category = category()`
+- `Value = binary() | undefined`
 
 ### entry()
 
 An `item` or `entry` tuple.
+
+```erlang
+feeder_entries:get(Key, Entry) -> Value
+```
+- `Key = authors | categories | content | duration | id | image | links | subtitle | summary | title | updated`
+- `Entry = entry()`
+- `Value = binary() | [author()] | [category()] | text() | [link()] | undefined`
+
+| Key | Type |
+| --- | --- |
+| `authors` | `[author()]` |
+| `categories` | `[category()]` |
+| `content` | `text()` |
+| `duration` | `binary()` |
+| `id` | `binary()` |
+| `image` | `binary()` |
+| `links` | `[link()]` |
+| `subtitle` | `text()` |
+| `summary` | `text()` |
+| `title` | `text()` |
+| `updated` | `binary()` |
+
+
+### feed()
+
+The `channel` or `feed` tuple.
+
+```erlang
+feeder_feeds:get(Key, Feed) -> Value
+```
+- `Key = authors | categories | id | image | language | links | subtitle | summary | title | ttl | updated`
+- `Feed = feed()`
+- `Value = [author()] | [category()] | binary() | [link()] | text() | pos_integer() | undefined`
+
+| Key | Type |
+| --- | --- |
+| `authors` | `[author()]` |
+| `categories` | `[category()]` |
+| `id` | `binary()` |
+| `image` | `binary()` |
+| `language` | `binary()` |
+| `links` | `[link()]` |
+| `subtitle` | `text()` |
+| `summary` | `text()` |
+| `title` | `text()` |
+| `ttl` | `pos_integer()` |
+| `updated` | `binary()` |
+
+### link()
+
+A link contained by a `feed` or `entry`. It can include enclosures.
+
+```erlang
+feeder_links:get(Key, Link) -> Value
+```
+- `Key = length | url | type | rel | title`
+- `Link = link()`
+- `Value = binary() | undefined`
+
+### text()
+
+A chunk of text optionally decorated by language and type. It used by titles, subtitles, summaries, and content.
+
+```erlang
+feeder_text:get(Key, Text) -> Value
+```
+- `Key = value | type | language`
+- `Text = text()`
+- `Value = binary() | undefined`
 
 ### option()
 
@@ -98,7 +179,7 @@ endFeed
 
 Receive notification of the end of a document. **feeder** will send this event only once, and it will be the last event during the parse.
 
-## Exports
+## Tasks
 
 ### Parsing feeds
 
@@ -119,29 +200,6 @@ feeder:stream(Xml, Opts) -> Result
 - `Result = {ok, EventState, Rest}`
 - `Rest = unicode_binary() | latin1_binary()`
 - `EventState = term()`
-
-### Accessing values
-
-```erlang
-feeder_feeds:get(Key, Feed) -> Value
-```
-- `Key = author | id | image | language | link | subtitle | summary | title | updated`
-- `Feed = feed()`
-- `Value = binary() | undefined`
-
-```erlang
-feeder_enclosures:get(Key, Enclosure) -> Value
-```
-- `Key = url | length | type`
-- `Enclosure = enclosure()`
-- `Value = binary() | undefined`
-
-```erlang
-feeder_entries:get(Key, Entry) -> Value
-```
-- `Key = author | duration | enclosure | id | image | link | subtitle | summary | title | updated`
-- `Entry = entry()`
-- `Value = binary() | enclosure() | undefined`
 
 ## License
 
