@@ -95,6 +95,22 @@ prepend(T, F, V) when V =/= undefined ->
 prepend(T, _, _) ->
   T.
 
+maybe_prepend(V, L, true) ->
+  [V | L];
+maybe_prepend(_V, L, false) ->
+  L.
+  
+prepend_unique(T, F, V) when V =/= undefined ->
+  NewList = case element(F, T) of
+    undefined -> 
+      [V];
+    List when is_list(List) -> 
+      maybe_prepend(V, List, not lists:member(V, List))
+  end,
+  setelement(F, T, NewList);
+prepend_unique(T, _, _) ->
+  T.
+
 reduce_attrs(E, [H|T], Attr) ->
   {_, _, K, V} = H,
   reduce_attrs(Attr(E, list_to_atom(K), list_to_binary(V)), T, Attr);
@@ -129,7 +145,39 @@ link_attr(L, _, _) -> L.
 link_entity(State) ->
   Link = #link{url=trim(chars(State))},
   reduce_attrs(Link, attrs(State), fun link_attr/3).
+  
+has_attr(L, Attr) ->
+  lists:any(fun (Elem) ->
+    {_, _, K, _} = Elem,
+    list_to_atom(K) =:= Attr
+  end, L).
 
+
+empty_or_default([], DefaultValue) ->
+  DefaultValue;
+empty_or_default([Attr], _DefaultValue) ->
+  {_, _, _, V} = Attr,
+  V;
+empty_or_default([Attr | _Tail], _DefaultValue) ->
+  {_, _, _, V} = Attr,
+  V.
+
+get_attr(L, Attr, DefaultValue) ->
+  Attrs = lists:filter(fun (Elem) ->
+    {_, _, K, _} = Elem,
+    list_to_atom(K) =:= Attr
+  end, L),
+  empty_or_default(Attrs, DefaultValue).
+
+guid_link(Chars, true) ->
+  #link{url = list_to_binary(Chars)};
+guid_link(_Chars, false) ->
+  undefined.
+
+guid_link(State) ->
+  IsPermalink = list_to_atom(get_attr(attrs(State), isPermaLink, "true")),
+  guid_link(chars(State), IsPermalink).
+  
 enc_attr(E, url, V) -> E#link{url=V};
 enc_attr(E, length, V) -> E#link{length=V};
 enc_attr(E, type, V) -> E#link{type=V};
@@ -138,11 +186,6 @@ enc_attr(E, _, _) -> E.
 enclosure(State) ->
   reduce_attrs(#link{rel = <<"enclosure">>}, attrs(State), fun enc_attr/3).
 
-has_attr(L, Attr) ->
-  lists:any(fun (Elem) ->
-    {_, _, K, _} = Elem,
-    list_to_atom(K) =:= Attr
-  end, L).
 
 content_link_attr(L, src, V) -> L#link{url=V};
 content_link_attr(L, type, V) -> L#link{type=V};
@@ -162,6 +205,8 @@ update_content(E, State, _) ->
 feed(F, author, State) ->
   prepend(F, #feed.authors, State#state.author);
 feed(F, id, State) ->
+  update(F, #feed.id, chars(State));
+feed(F, guid, State) ->
   update(F, #feed.id, chars(State));
 feed(F, url, State) when State#state.image =:= true ->
   update(F, #feed.image, chars(State));
@@ -198,13 +243,17 @@ entry(E, author, State) ->
 entry(E, duration, State) ->
   update(E, #entry.duration, chars(State));
 entry(E, enclosure, State) -> 
-  prepend(E, #entry.links, enclosure(State));
+  prepend_unique(E, #entry.links, enclosure(State));
 entry(E, id, State) ->
   update(E, #entry.id, chars(State));
+entry(E, guid, State) ->
+  Entry1 = update(E, #entry.id, chars(State)),
+  Link = guid_link(State),
+  prepend_unique(Entry1, #entry.links, Link);
 entry(E, image, State) ->
   update(E, #entry.image, chars(State));
 entry(E, link, State) ->
-  prepend(E, #entry.links, link_entity(State));
+  prepend_unique(E, #entry.links, link_entity(State));
 entry(E, subtitle, State) ->
   update(E, #entry.subtitle, text(State));
 entry(E, summary, State) ->
@@ -381,7 +430,7 @@ qname({_, "duration"}) -> duration;
 qname({_, "enclosure"}) -> enclosure;
 qname({_, "entry"}) -> entry;
 qname({_, "feed"}) -> feed;
-qname({_, "guid"}) -> id;
+qname({_, "guid"}) -> guid;
 qname({_, "id"}) -> id;
 qname({_, "image"}) -> image;
 qname({_, "item"}) -> entry;
@@ -470,7 +519,7 @@ qname_test() -> q([
   {enclosure, ["enclosure"]},
   {entry, ["entry", "item"]},
   {feed, ["feed", "channel"]},
-  {id, ["id", "guid"]},
+  {id, ["id"]},
   {image, ["image"]},
   {language, ["language"]},
   {link, ["link"]},

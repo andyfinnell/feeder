@@ -19,7 +19,8 @@ wanted() -> {
     #entry{
       authors = [#author{name= <<"John Doe">>}],
       duration = <<"7:04">>,
-      links = [#link{rel = <<"enclosure">>, url= <<"http://example.com/podcasts/everything/AllAboutEverythingEpisode3.m4a">>, length= <<"8727310">>, type= <<"audio/x-m4a">>}],
+      links = [#link{rel = <<"enclosure">>, url= <<"http://example.com/podcasts/everything/AllAboutEverythingEpisode3.m4a">>, length= <<"8727310">>, type= <<"audio/x-m4a">>},
+              #link{url = <<"http://example.com/podcasts/archive/aae20050615.m4a">>}],
       image = <<"http://example.com/podcasts/everything/AllAboutEverything/Episode1.jpg">>,
       id = <<"http://example.com/podcasts/archive/aae20050615.m4a">>,
       subtitle = #text{value= <<"Rückblicke, Einblicke und Ausblicke auf das netzpolitische Geschehen als wöchentlicher Podcast"/utf8>>},
@@ -31,7 +32,8 @@ wanted() -> {
     #entry{
       authors = [#author{name= <<"Jane Doe">>}],
       duration = <<"4:34">>,
-      links = [#link{rel = <<"enclosure">>, url= <<"http://example.com/podcasts/everything/AllAboutEverythingEpisode2.mp3">>, length= <<"5650889">>, type= <<"audio/mpeg">>}],
+      links = [#link{rel = <<"enclosure">>, url= <<"http://example.com/podcasts/everything/AllAboutEverythingEpisode2.mp3">>, length= <<"5650889">>, type= <<"audio/mpeg">>},
+              #link{url = <<"http://example.com/podcasts/archive/aae20050608.mp3">>}],
       image = <<"http://example.com/podcasts/everything/AllAboutEverything/Episode2.jpg">>,
       id = <<"http://example.com/podcasts/archive/aae20050608.mp3">>,
       subtitle = #text{value= <<"Comparing socket wrenches is fun!">>},
@@ -43,7 +45,8 @@ wanted() -> {
     #entry{
       authors = [#author{name= <<"Various">>}],
       duration = <<"3:59">>,
-      links = [#link{rel = <<"enclosure">>, url= <<"http://example.com/podcasts/everything/AllAboutEverythingEpisode1.mp3">>, length= <<"4989537">>, type= <<"audio/mpeg">>}],
+      links = [#link{rel = <<"enclosure">>, url= <<"http://example.com/podcasts/everything/AllAboutEverythingEpisode1.mp3">>, length= <<"4989537">>, type= <<"audio/mpeg">>},
+              #link{url = <<"http://example.com/podcasts/archive/aae20050601.mp3">>}],
       image = <<"http://example.com/podcasts/everything/AllAboutEverything/Episode3.jpg">>,
       id = <<"http://example.com/podcasts/archive/aae20050601.mp3">>,
       subtitle = #text{value= <<"Red + Blue != Purple">>},
