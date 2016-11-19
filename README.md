@@ -130,7 +130,7 @@ feeder_links:get(Key, Link) -> Value
 ```
 - `Key = length | url | type | rel | title`
 - `Link = link()`
-- `Value = binary() | undefined`
+- `Value = binary() | pos_integer() | undefined`
 
 ### text()
 

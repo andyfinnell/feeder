@@ -136,7 +136,7 @@ category(State) ->
   reduce_attrs(Cat, attrs(State), fun category_attr/3).
 
 link_attr(L, href, V) -> L#link{url=V};
-link_attr(L, length, V) -> L#link{length=V};
+link_attr(L, length, V) -> L#link{length=binary_to_integer(V)};
 link_attr(L, type, V) -> L#link{type=V};
 link_attr(L, rel, V) -> L#link{rel=V};
 link_attr(L, title, V) -> L#link{title=V};
@@ -179,7 +179,7 @@ guid_link(State) ->
   guid_link(chars(State), IsPermalink).
   
 enc_attr(E, url, V) -> E#link{url=V};
-enc_attr(E, length, V) -> E#link{length=V};
+enc_attr(E, length, V) -> E#link{length=binary_to_integer(V)};
 enc_attr(E, type, V) -> E#link{type=V};
 enc_attr(E, _, _) -> E.
 

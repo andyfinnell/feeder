@@ -1,7 +1,7 @@
 
 -record(link, {
   url :: undefined | binary(),
-  length :: undefined | binary(),
+  length :: undefined | pos_integer(),
   type :: undefined | binary(),
   rel :: undefined | binary(),
   title :: undefined | binary()
