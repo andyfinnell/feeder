@@ -2,6 +2,10 @@
 
 The **feeder** [Erlang](http://www.erlang.org/) library parses RSS and Atom formatted XML feeds. It is a stream based parser that sends its events through a callback interface.
 
+## Dependencies
+
+**feeder** depends on [rebar3](http://www.rebar3.org/) to build.
+
 ## Usage
 
 Parse a file and accumulate parser events:
@@ -31,7 +35,7 @@ To try HTTP streaming do:
 
 ```
 cd example
-make
+rebar3 compile
 erl -pa ebin deps/*/ebin
 ```
 
@@ -205,4 +209,4 @@ feeder:stream(Xml, Opts) -> Result
 
 ## License
 
-[MIT License](https://raw.github.com/michaelnisi/feeder/master/LICENSE)
+[MIT License](https://raw.github.com/andyfinnell/feeder/master/LICENSE)
