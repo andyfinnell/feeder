@@ -71,7 +71,7 @@ An `item` or `entry` tuple.
 ```erlang
 feeder_entries:get(Key, Entry) -> Value
 ```
-- `Key = authors | categories | content | duration | id | image | links | subtitle | summary | title | updated`
+- `Key = authors | categories | content | duration | id | image | links | published | subtitle | summary | title | updated`
 - `Entry = entry()`
 - `Value = binary() | [author()] | [category()] | text() | [link()] | undefined`
 
@@ -84,6 +84,7 @@ feeder_entries:get(Key, Entry) -> Value
 | `id` | `binary()` |
 | `image` | `binary()` |
 | `links` | `[link()]` |
+| `published` | `binary()` |
 | `subtitle` | `text()` |
 | `summary` | `text()` |
 | `title` | `text()` |
@@ -97,7 +98,7 @@ The `channel` or `feed` tuple.
 ```erlang
 feeder_feeds:get(Key, Feed) -> Value
 ```
-- `Key = authors | categories | id | image | language | links | subtitle | summary | title | ttl | updated`
+- `Key = authors | categories | id | image | language | links | published | subtitle | summary | title | ttl | updated`
 - `Feed = feed()`
 - `Value = [author()] | [category()] | binary() | [link()] | text() | pos_integer() | undefined`
 
@@ -109,6 +110,7 @@ feeder_feeds:get(Key, Feed) -> Value
 | `image` | `binary()` |
 | `language` | `binary()` |
 | `links` | `[link()]` |
+| `published` | `binary()` |
 | `subtitle` | `text()` |
 | `summary` | `text()` |
 | `title` | `text()` |
