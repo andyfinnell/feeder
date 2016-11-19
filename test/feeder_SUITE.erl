@@ -24,6 +24,7 @@
 -export([gratefulDead/1]).
 -export([rssTwoExample2/1]).
 -export([sampleRss/1]).
+-export([dublincore/1]).
 -export([measure_time/1]).
 
 all() -> [
@@ -38,7 +39,7 @@ suite() ->
 
 groups() -> [
   {atom, [parallel], [atom, author, cabel, globnerdishness]},
-  {rss, [parallel], [rss, aaronvegh, applenews, bleacherreport, cnn, five12pixels, gratefulDead, rssTwoExample2, sampleRss]},
+  {rss, [parallel], [rss, aaronvegh, applenews, bleacherreport, cnn, five12pixels, gratefulDead, rssTwoExample2, sampleRss, dublincore]},
   {itunes, [parallel], [itunes]}
 ].
 
@@ -100,6 +101,7 @@ five12pixels(Conf) -> test(Conf, "five12pixels", five12pixels:wanted()).
 gratefulDead(Conf) -> test(Conf, "gratefulDead", gratefulDead:wanted()).
 rssTwoExample2(Conf) -> test(Conf, "rssTwoExample2", rssTwoExample2:wanted()).
 sampleRss(Conf) -> test(Conf, "sampleRss", sampleRss:wanted()).
+dublincore(Conf) -> test(Conf, "dublincore", dublincore:wanted()).
 itunes(Conf) -> test(Conf, "itunes", itunes:wanted()).
 
 test_loop(_M, _F, _A, 0, List) ->
