@@ -75,24 +75,25 @@ An `item` or `entry` tuple.
 ```erlang
 feeder_entries:get(Key, Entry) -> Value
 ```
-- `Key = authors | categories | content | duration | id | image | links | published | subtitle | summary | title | updated`
+- `Key = authors | categories | content | duration | id | image | links | published | subtitle | summary | title | unique_id | updated`
 - `Entry = entry()`
 - `Value = binary() | [author()] | [category()] | text() | [link()] | undefined`
 
-| Key | Type |
-| --- | --- |
-| `authors` | `[author()]` |
-| `categories` | `[category()]` |
-| `content` | `text()` |
-| `duration` | `binary()` |
-| `id` | `binary()` |
-| `image` | `binary()` |
-| `links` | `[link()]` |
-| `published` | `binary()` |
-| `subtitle` | `text()` |
-| `summary` | `text()` |
-| `title` | `text()` |
-| `updated` | `binary()` |
+| Key | Type | Description |
+| --- | --- | --- |
+| `authors` | `[author()]` | From author, contributor, creator |
+| `categories` | `[category()]` | From category |
+| `content` | `text()` | From content |
+| `duration` | `binary()` | From duration |
+| `id` | `binary()` | From id, guid |
+| `image` | `binary()` | From image |
+| `links` | `[link()]` | From link, enclosure, content with src attribute |
+| `published` | `binary()` | From pubDate, published |
+| `subtitle` | `text()` | From subtitle |
+| `summary` | `text()` | From summary, description |
+| `title` | `text()` | From title |
+| `unique_id` | `binary()` | Derived property. If id is present, it's used. If not, attempts to find a unique looking link. If none of those, it will sha256 the concat'd contents of title, subtitle, summary, and content. |
+| `updated` | `binary()` | From updated, date, lastBuildDate |
 
 
 ### feed()
